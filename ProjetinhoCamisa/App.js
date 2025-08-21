@@ -1,65 +1,57 @@
-// Importa o componente StatusBar do React Native para controlar a barra de status do celular
-import { StatusBar } from 'react-native'; 
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Importa o container de navegação do React Navigation
-import { NavigationContainer } from '@react-navigation/native'; 
-
-// Importa a função para criar um stack navigator (navegação em pilha)
-import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
-
-// Importa as telas do aplicativo
+import TelaInicial from './components/TelaInicial';
 import TelaLogin from './components/TelaLogin';
 import TelaCatalogo from './components/TelaCatalogo';
 import TelaDetalhes from './components/TelaDetalhes';
 
-// Cria uma instância do stack navigator
-const Stack = createNativeStackNavigator(); 
+const Stack = createNativeStackNavigator();
 
-// Componente principal do app
 export default function App() {
   return (
-    // Envolve todo o app com o container de navegação
-    <NavigationContainer> 
+    <NavigationContainer>
+      {/* Barra de status */}
+      <StatusBar barStyle="light-content" backgroundColor="#800000" />
 
-      {/* Configura a barra de status do celular */}
-      <StatusBar 
-        barStyle="light-content"   // Ícones e texto em tom claro
-        backgroundColor="#800000"  // Cor de fundo bordô
-      /> 
-
-      {/* Cria o stack navigator com a tela inicial sendo "Login" */}
-      <Stack.Navigator initialRouteName="Login"> 
+      <Stack.Navigator initialRouteName="Inicial">
+        {/* Tela de capa inicial */}
+        <Stack.Screen
+          name="Inicial"
+          component={TelaInicial}
+          options={{ headerShown: false }} // sem barra no topo
+        />
 
         {/* Tela de Login */}
         <Stack.Screen
-          name="Login"               // Nome da tela para navegação
-          component={TelaLogin}      // Componente que será renderizado
-          options={{ headerShown: false }} // Oculta a barra superior
+          name="Login"
+          component={TelaLogin}
+          options={{ headerShown: false }}
         />
 
-        {/* Tela do catálogo de camisetas */}
+        {/* Tela do Catálogo */}
         <Stack.Screen
-          name="Catalogo"             // Nome da tela
-          component={TelaCatalogo}    // Componente exibido
+          name="Catalogo"
+          component={TelaCatalogo}
           options={{
-            title: 'Catálogo de Camisetas',               // Título exibido no topo
-            headerStyle: { backgroundColor: '#800000' },  // Fundo da barra bordô
-            headerTintColor: '#F5F5DC',                   // Texto em bege claro
+            title: 'Catálogo de Camisetas',
+            headerStyle: { backgroundColor: '#800000' },
+            headerTintColor: '#F5F5DC',
           }}
         />
 
-        {/* Tela de detalhes do produto */}
+        {/* Tela de Detalhes */}
         <Stack.Screen
-          name="Detalhes"              // Nome da tela
-          component={TelaDetalhes}     // Componente exibido
+          name="Detalhes"
+          component={TelaDetalhes}
           options={{
-            title: 'Detalhes do Produto',                 // Título exibido no topo
-            headerStyle: { backgroundColor: '#800000' },  // Fundo da barra bordô
-            headerTintColor: '#F5F5DC',                   // Texto em bege claro
+            title: 'Detalhes do Produto',
+            headerStyle: { backgroundColor: '#800000' },
+            headerTintColor: '#F5F5DC',
           }}
         />
-
-      </Stack.Navigator> 
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

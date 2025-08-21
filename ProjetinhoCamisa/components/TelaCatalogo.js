@@ -1,4 +1,6 @@
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
+
+// Import das imagens
 import CamisetaSP from './assets/Camiseta SP frente.png';
 import CamisetaCorinthians from './assets/Camiseta Corinthians frente.png';
 import CamisetaFlamengo from './assets/Camiseta Flamengo frente.png';
@@ -30,7 +32,7 @@ const camisetas = [
   {
     id: '4',
     nome: 'Corinthians 2025',
-    imagem: CamisetaSP,
+    imagem: CamisetaCorinthians,
   },
   {
     id: '5',
@@ -67,20 +69,27 @@ const camisetas = [
 export default function TelaCatalogo({ navigation }) {
   return (
     <View style={estilos.container}>
-      <FlatList
-        data={camisetas}
-        keyExtractor={(item) => item.id}
-        numColumns={2}
-        columnWrapperStyle={{ justifyContent: 'space-between' }}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={estilos.item}
-            onPress={() => navigation.navigate('Detalhes', { produto: item })}>
-            <Image source={{ uri: item.imagem }} style={estilos.imagem} />
-            <Text style={estilos.nome}>{item.nome}</Text>
-          </TouchableOpacity>
-        )}
-      />
+  <FlatList
+    data={camisetas}   // Lista de dados que será exibida (no caso, um array de camisetas).
+    keyExtractor={(item) => item.id} // Define a chave única de cada item, usando o id da camiseta.
+    numColumns={2}  // Exibe os itens em 2 colunas (em forma de grade).
+    columnWrapperStyle={{ justifyContent: 'space-between' }} 
+    // Ajusta o espaçamento entre as colunas, distribuindo os itens igualmente.
+    
+    renderItem={({ item }) => ( // Função que renderiza cada item da lista.
+      <TouchableOpacity
+        style={estilos.item} // Estilo aplicado ao "card" de cada camiseta.
+        onPress={() => navigation.navigate('Detalhes', { produto: item })}>
+        {/* Quando clicado, navega para a tela "Detalhes", passando o item como parâmetro */}
+        
+        <Image source={{ uri: item.imagem }} style={estilos.imagem} />
+        {/* Mostra a imagem da camiseta, carregada por URL */}
+        
+        <Text style={estilos.nome}>{item.nome}</Text>
+        {/* Mostra o nome da camiseta */}
+      </TouchableOpacity>
+    )}
+  />
     </View>
   );
 }

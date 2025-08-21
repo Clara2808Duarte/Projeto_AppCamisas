@@ -1,16 +1,16 @@
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 // Import das imagens
-import CamisetaSP from './assets/Camiseta SP frente.png';
-import CamisetaCorinthians from './assets/Camiseta Corinthians frente.png';
-import CamisetaFlamengo from './assets/Camiseta Flamengo frente.png';
-import CamisetaPalmeiras from './assets/Camiseta Palmeiras frente.png';
-import CamisetaBotafogo from './assets/Camiseta Botafogo frente.png';
-import CamisetaChelsea from './assets/Camiseta Chelsea frente.png';
-import CamisetaRM from './assets/Camiseta RM frente.png';
-import CamisetaPSG from './assets/Camiseta PSG frente.png';
-import CamisetaMC from './assets/Camiseta MC frente.png';
-import CamisetaLiverpool from './assets/Camiseta Liverpool frente.png';
+import CamisetaSP from './assets/CamisetaSPfrente.png';
+import CamisetaCorinthians from './assets/CamisetaCorinthiansfrente.png';
+import CamisetaFlamengo from './assets/CamisetaFlamengofrente.png';
+import CamisetaPalmeiras from './assets/CamisetaPalmeirasfrente.png';
+import CamisetaBotafogo from './assets/CamisetaBotafogofrente.png';
+import CamisetaChelsea from './assets/CamisetaChelseafrente.png';
+import CamisetaRM from './assets/CamisetaRMfrente.png';
+import CamisetaPSG from './assets/CamisetaPSGfrente.png';
+import CamisetaMC from './assets/CamisetaMCfrente.png';
+import CamisetaLiverpool from './assets/CamisetaLiverpoolfrente.png';
 
 
 const camisetas = [

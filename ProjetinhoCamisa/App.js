@@ -1,6 +1,3 @@
-// Importa o hook useState do React (não está sendo usado aqui, mas é comum importar)
-import { useState } from 'react'; 
-
 // Importa o componente StatusBar do React Native para controlar a barra de status do celular
 import { StatusBar } from 'react-native'; 
 
@@ -26,8 +23,8 @@ export default function App() {
 
       {/* Configura a barra de status do celular */}
       <StatusBar 
-        barStyle="dark-content"  // Ícones e texto em tom escuro
-        backgroundColor="#4B0082" // Cor de fundo roxa
+        barStyle="light-content"   // Ícones e texto em tom claro
+        backgroundColor="#800000"  // Cor de fundo bordô
       /> 
 
       {/* Cria o stack navigator com a tela inicial sendo "Login" */}
@@ -45,9 +42,9 @@ export default function App() {
           name="Catalogo"             // Nome da tela
           component={TelaCatalogo}    // Componente exibido
           options={{
-            title: 'Catálogo de Camisetas',      // Título exibido no topo
-            headerStyle: { backgroundColor: '#4B0082' }, // Cor de fundo da barra
-            headerTintColor: '#fff',             // Cor do texto e botões na barra
+            title: 'Catálogo de Camisetas',               // Título exibido no topo
+            headerStyle: { backgroundColor: '#800000' },  // Fundo da barra bordô
+            headerTintColor: '#F5F5DC',                   // Texto em bege claro
           }}
         />
 
@@ -56,9 +53,9 @@ export default function App() {
           name="Detalhes"              // Nome da tela
           component={TelaDetalhes}     // Componente exibido
           options={{
-            title: 'Detalhes do Produto',       // Título exibido no topo
-            headerStyle: { backgroundColor: '#4B0082' }, // Cor de fundo da barra
-            headerTintColor: '#fff',            // Cor do texto e botões
+            title: 'Detalhes do Produto',                 // Título exibido no topo
+            headerStyle: { backgroundColor: '#800000' },  // Fundo da barra bordô
+            headerTintColor: '#F5F5DC',                   // Texto em bege claro
           }}
         />
 

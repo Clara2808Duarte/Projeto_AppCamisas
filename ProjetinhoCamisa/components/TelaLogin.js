@@ -1,24 +1,24 @@
-import { useState } from 'react'; // Importa o hook useState do React para armazenar e atualizar estado
+import { useState } from 'react'; 
 import {
-  View, // Componente contêiner para agrupar outros componentes
-  Text, // Componente para exibir texto
-  TextInput, // Componente para receber entrada de texto do usuário
-  TouchableOpacity, // Componente para criar botões tocáveis
+  View, // Agrupar outros componentes
+  Text, // Exibie texto
+  TextInput, // Receber entrada de texto do usuário
+  TouchableOpacity, // Criar botões 
   Alert, // API para exibir alertas no app
-  StyleSheet, // API para criar estilos em React Native
+  StyleSheet, 
   KeyboardAvoidingView, // Componente que ajusta a tela quando o teclado aparece
   Platform, // API para detectar sistema operacional (iOS ou Android)
-} from 'react-native'; // Importa todos os componentes da biblioteca React Native
+} from 'react-native'; 
 
-export default function TelaLogin({ navigation }) { // Componente principal da tela de login, recebe "navigation" para navegar entre telas
+export default function TelaLogin({ navigation }) { 
   const [usuario, setUsuario] = useState(''); // Estado para armazenar o valor digitado no campo usuário
   const [senha, setSenha] = useState(''); // Estado para armazenar o valor digitado no campo senha
   const [erroUsuario, setErroUsuario] = useState(''); // Estado para armazenar mensagem de erro do usuário
 
-  const validarLogin = () => { // Função chamada ao clicar no botão "Entrar"
+  const validarLogin = () => { // ao clicar no botão "Entrar"
     if (!usuario.trim()) { // Verifica se o usuário não digitou nada (trim remove espaços)
-      setErroUsuario('O usuário é obrigatório.'); // Define mensagem de erro para usuário vazio
-      return; // Sai da função para não continuar
+      setErroUsuario('O usuário é obrigatório.'); // mensagem de erro para usuário vazio
+      return; 
     } else {
       setErroUsuario(''); // Limpa a mensagem de erro se o usuário estiver preenchido
     }
@@ -28,64 +28,64 @@ export default function TelaLogin({ navigation }) { // Componente principal da t
       Alert.alert('✅ Sucesso!', 'Login realizado com sucesso.'); // Mostra alerta de sucesso
       navigation.navigate('Catalogo'); // Navega para a tela "Catalogo"
     } else {
-      Alert.alert('⚠️ Erro', 'Usuário ou senha incorretos.'); // Mostra alerta caso usuário ou senha estejam errados
+      Alert.alert(':( Erro', 'Usuário ou senha incorretos.'); // Mostra alerta caso usuário ou senha estejam errados
     }
   };
 
   return ( // Retorna os elementos que serão renderizados na tela
     <KeyboardAvoidingView
-      style={estilos.container} // Aplica estilo ao contêiner principal
+      style={estilos.container} 
       behavior={Platform.OS === 'ios' ? 'padding' : undefined} // Ajusta o comportamento do teclado no iOS
     >
-      <View style={estilos.card}> {/* Card branco que contém os campos e botão */}
+      <View style={estilos.card}> 
         <Text style={estilos.titulo}>⚽ Time de Craques</Text> {/* Título da tela */}
 
-        <View style={estilos.bloco}> {/* Bloco para campo usuário */}
+        <View style={estilos.bloco}> 
           <Text style={estilos.rotulo}>Usuário</Text> {/* Rótulo do campo */}
           <TextInput
-            placeholder="Digite seu usuário" // Texto que aparece quando o campo está vazio
-            value={usuario} // Valor atual do campo, ligado ao estado
+            placeholder="Digite seu usuário" 
+            value={usuario}
             onChangeText={setUsuario} // Atualiza estado ao digitar
             style={[estilos.input, erroUsuario ? estilos.inputErro : null]} // Aplica estilo e altera borda se houver erro
-            placeholderTextColor="#aaa" // Cor do texto placeholder
+            placeholderTextColor="#aaa" 
           />
-          {erroUsuario ? ( // Se houver erro, exibe mensagem
+          {erroUsuario ? ( 
             <Text style={estilos.textoErro}>{erroUsuario}</Text>
           ) : null}
         </View>
 
-        <View style={estilos.bloco}> {/* Bloco para campo senha */}
-          <Text style={estilos.rotulo}>Senha</Text> {/* Rótulo do campo */}
+        <View style={estilos.bloco}>
+          <Text style={estilos.rotulo}>Senha</Text> 
           <TextInput
-            placeholder="Digite sua senha" // Placeholder do campo senha
-            value={senha} // Valor atual do campo senha
-            onChangeText={setSenha} // Atualiza estado ao digitar senha
-            style={estilos.input} // Aplica estilo padrão
+            placeholder="Digite sua senha" 
+            value={senha} 
+            onChangeText={setSenha} // Atualiza estado 
+            style={estilos.input} 
             placeholderTextColor="#aaa" // Cor do placeholder
-            secureTextEntry // Oculta os caracteres digitados
+            secureTextEntry // Oculta os caracteres digitados por ser senha
           />
         </View>
 
-        <TouchableOpacity style={estilos.botao} onPress={validarLogin}> {/* Botão Entrar */}
-          <Text style={estilos.textoBotao}>Entrar</Text> {/* Texto do botão */}
+        <TouchableOpacity style={estilos.botao} onPress={validarLogin}> 
+          <Text style={estilos.textoBotao}>Entrar</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
 }
 
-const estilos = StyleSheet.create({ // Criação do objeto de estilos
+const estilos = StyleSheet.create({ 
   container: {
     flex: 1, // Ocupa toda a tela
-    justifyContent: 'center', // Centraliza verticalmente
-    alignItems: 'center', // Centraliza horizontalmente
-    padding: 20, // Espaçamento interno
-    backgroundColor: '#45150d', // Cor de fundo da tela
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    padding: 20,
+    backgroundColor: '#45150d', 
   },
   card: {
-    width: '100%', // Largura total
+    width: '100%', 
     backgroundColor: '#fff', 
-    borderRadius: 16, // Cantos arredondados
+    borderRadius: 16,
     padding: 25, 
     shadowColor: '#000', // Cor da sombra
     shadowOpacity: 0.15, // Opacidade da sombra
@@ -94,27 +94,27 @@ const estilos = StyleSheet.create({ // Criação do objeto de estilos
   },
   titulo: {
     fontSize: 28, 
-    fontWeight: '800', // Peso da fonte
-    color: '#45150d', // Cor do texto
-    textAlign: 'center', // Centraliza o texto
+    fontWeight: '800', 
+    color: '#45150d', 
+    textAlign: 'center', 
     marginBottom: 30, // Espaço abaixo do título
     letterSpacing: 1, // Espaçamento entre letras
   },
-  bloco: { marginBottom: 18 }, // Espaçamento entre blocos de campo
+  bloco: { marginBottom: 18 }, 
   rotulo: {
-    fontSize: 15, // Tamanho da fonte do rótulo
-    fontWeight: '600', // Peso da fonte
+    fontSize: 15, 
+    fontWeight: '600', 
     color: '#45150d', // Cor do texto
     marginBottom: 8, // Espaço abaixo do rótulo
   },
   input: {
-    color: 'white', // Cor do texto digitado
-    borderWidth: 1, // Largura da borda
-    borderColor: '#8A2BE2', // Cor da borda
-    borderRadius: 10, // Cantos arredondados do input
+    color: 'white', 
+    borderWidth: 1, 
+    borderColor: '#8A2BE2', 
+    borderRadius: 10, // Cantos arredondados
     padding: 14, // Espaço interno
-    backgroundColor: '#45150d', // Fundo do input
-    fontSize: 15, // Tamanho da fonte
+    backgroundColor: '#45150d',
+    fontSize: 15, 
     shadowColor: '#8A2BE2', // Cor da sombra
     shadowOpacity: 0.1, // Opacidade da sombra
     shadowRadius: 4, // Raio da sombra
@@ -122,19 +122,19 @@ const estilos = StyleSheet.create({ // Criação do objeto de estilos
   inputErro: { borderColor: '#FF0000' }, // Borda vermelha se houver erro
   textoErro: { color: '#FF0000', marginTop: 6, fontSize: 13 }, // Estilo da mensagem de erro
   botao: {
-    backgroundColor: '#45150d', // Cor de fundo do botão
-    paddingVertical: 15, // Altura interna do botão
-    borderRadius: 12, // Cantos arredondados
-    alignItems: 'center', // Centraliza texto do botão
-    marginTop: 10, // Espaço acima do botão
+    backgroundColor: '#45150d', 
+    paddingVertical: 15, 
+    borderRadius: 12, 
+    alignItems: 'center', 
+    marginTop: 10, 
     shadowColor: '#4B0082', // Cor da sombra
     shadowOpacity: 0.25, // Opacidade da sombra
     shadowRadius: 6, // Raio da sombra
   },
   textoBotao: {
-    color: '#fff', // Cor do texto
-    fontWeight: '700', // Peso da fonte
-    fontSize: 17, // Tamanho da fonte
+    color: '#fff', 
+    fontWeight: '700', 
+    fontSize: 17, 
     letterSpacing: 0.5, // Espaçamento entre letras
   },
 });
